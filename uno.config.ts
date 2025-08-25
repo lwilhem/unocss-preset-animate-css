@@ -1,5 +1,4 @@
 import { defineConfig, presetWind4 } from 'unocss'
-import { presetStarter } from './src'
 
 // Just for Vscode Extension
 
@@ -9,9 +8,6 @@ export default defineConfig({
       preflights: {
         reset: true,
       },
-    }),
-    presetStarter({
-      span: 24,
     }),
   ],
 })
