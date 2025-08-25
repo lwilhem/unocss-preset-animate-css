@@ -1,18 +1,22 @@
 packages: []
 
 catalogs:
-  cli:
+  dev:
+    unocss: ^66.4.2
+  lint:
     '@antfu/eslint-config': ^5.2.1
     eslint: ^9.34.0
     eslint-plugin-format: ^1.0.1
-    typescript: ^5.9.2
-    unbuild: ^3.6.1
-  types:
+  playground:
+    '@vitejs/plugin-vue': ^6.0.1
+    vite: ^7.1.3
+    vue: ^3.5.20
+  tools:
     '@types/node': ^24.3.0
-  unocss:
-    '@unocss/core': ^66.4.2
-    '@unocss/extractor-arbitrary-variants': ^66.4.2
-    '@unocss/rule-utils': ^66.4.2
+    bumpp: ^10.2.3
+    tsdown: ^0.14.2
+    typescript: ^5.9.2
+    vitest: ^3.2.4
 
 onlyBuiltDependencies:
   - esbuild

@@ -1,7 +1,6 @@
-import { definePreset } from '@unocss/core'
+import { definePreset } from 'unocss'
 
-export interface IUnoAnimateOptions {
-  // TODO: implement config format
+export interface StarterOptions {
   /**
    *  The number of columns in the grid system (Example option)
    *
@@ -10,23 +9,57 @@ export interface IUnoAnimateOptions {
   span?: number
 }
 
-export const presetUnoAnimate = definePreset((_options: IUnoAnimateOptions = {}) => {
-  // options stuff
-  const _span = _options.span ?? 12
+export const presetStarter = definePreset((_options: StarterOptions = {}) => {
+  const span = _options.span ?? 12
 
   return {
-    autocomplete: {
-      // implement autocomplete
-    },
-    name: 'preset-animate-css',
-    rules: [
-      // implement rules
-    ],
+    name: 'unocss-preset-starter',
+
     theme: {
-      // implement theme
+      // Customize your theme here
     },
-    variants: [
-      // implements variants
+
+    // Customize your preset here
+    rules: [
+      ['custom-rule', { color: 'red' }],
+      [
+        /col-(\d+)/,
+        ([_, s]) => ({ width: `calc(${s} / ${span} * 100%)` }),
+        { autocomplete: 'col-<span>' },
+      ],
     ],
+
+    // Customize your variants here
+    variants: [
+      {
+        name: '@active',
+        match(matcher) {
+          if (!matcher.startsWith('@active'))
+            return matcher
+
+          return {
+            matcher: matcher.slice(8),
+            selector: s => `${s}.active`,
+          }
+        },
+      },
+    ],
+
+    // You can also define built-in presets
+    presets: [
+      // ...
+    ],
+
+    // You can also define built-in transformers
+    transformers: [
+      // ...
+    ],
+
+    // Customize AutoComplete
+    autocomplete: {
+      shorthands: {
+        span: Array.from({ length: span }, (_, i) => `${i + 1}`),
+      },
+    },
   }
 })

@@ -11,7 +11,12 @@
     "verbatimModuleSyntax": true,
     "erasableSyntaxOnly": true,
     "skipDefaultLibCheck": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "sourceMap": true,
   },
   "include": [
     "**/*.ts"

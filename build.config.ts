@@ -1,17 +1,8 @@
-import { defineBuildConfig } from 'unbuild'
+import { defineConfig } from 'tsdown'
 
-export default defineBuildConfig({
-  entries: [
-    'src/index',
+export default defineConfig({
+  entry: [
+    './src/index.ts',
   ],
-  clean: true,
-  declaration: true,
-  externals: [
-    '@unocss/core',
-  ],
-  rollup: {
-    dts: {
-      respectExternal: false,
-    },
-  },
+  external: ['unocss'],
 })

@@ -1,48 +1,70 @@
 {
-  "name": "preset-uno-animate-css",
+  "name": "unocss-preset-animate-css",
   "type": "module",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "packageManager": "pnpm@10.15.0",
-  "description": "A 1:1 implementation of tw-animate-css inside a unocss preset",
+  "description": "A unocss preset based on the tw-animate-css library",
   "author": "Wilhem Lecanu <wilhem.lecanu@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/antfu/preset-uno-animate-css#readme",
+  "homepage": "https://github.com/unpreset/unocss-preset-animate-css#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/antfu/preset-uno-animate-css.git"
+    "url": "git+https://github.com/unpreset/unocss-preset-animate-css.git"
   },
+  "bugs": {
+    "url": "https://github.com/unpreset/unocss-preset-animate-css/issues"
+  },
+  "keywords": [
+    "unocss",
+    "unocss-preset",
+    "animation",
+    "css"
+  ],
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/index.d.mts",
-      "default": "./dist/index.mjs"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
     }
   },
-  "main": "dist/index.mjs",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
   "files": [
-    "*.css",
-    "*.d.ts",
     "dist"
   ],
   "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "prepublishOnly": "pnpm run build",
+    "release": "bumpp --commit --push --tag && pnpm publish",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "check": "tsc --noEmit",
-    "build": "unbuild"
-  },
-  "dependencies": {
-    "@unocss/core": "catalog:unocss",
-    "@unocss/extractor-arbitrary-variants": "catalog:unocss",
-    "@unocss/rule-utils": "catalog:unocss"
+    "test": "vitest",
+    "test:update": "vitest --update",
+    "play": "vite playground",
+    "deploy": "vite build playground"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "catalog:cli",
-    "@types/node": "catalog:types",
-    "eslint": "catalog:cli",
-    "eslint-plugin-format": "catalog:cli",
-    "typescript": "catalog:cli",
-    "unbuild": "catalog:cli"
+    "@antfu/eslint-config": "catalog:lint",
+    "@types/node": "catalog:tools",
+    "@vitejs/plugin-vue": "catalog:playground",
+    "bumpp": "catalog:tools",
+    "eslint": "catalog:lint",
+    "eslint-plugin-format": "catalog:lint",
+    "tsdown": "catalog:tools",
+    "typescript": "catalog:tools",
+    "unocss": "catalog:dev",
+    "vite": "catalog:playground",
+    "vitest": "catalog:tools",
+    "vue": "catalog:playground"
   }
 }
