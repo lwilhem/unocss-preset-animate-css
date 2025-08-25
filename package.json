@@ -25,6 +25,14 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./preflights": {
+      "types": "./dist/preflights/index.d.ts",
+      "import": "./dist/preflights/index.js"
+    },
+    "./theme": {
+      "types": "./dist/theme/index.d.ts",
+      "import": "./dist/theme/index.js"
     }
   },
   "main": "./dist/index.js",

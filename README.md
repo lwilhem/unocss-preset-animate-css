@@ -5,9 +5,11 @@
 UnoCSS preset quickstart template
 
 ## Features
+
 - 🔥 Description of the preset
 
 ## Usage
+
 ```shell
 pnpm i -D unocss-preset-starter unocss
 ```
