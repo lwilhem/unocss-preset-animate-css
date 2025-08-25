@@ -1,0 +1,18 @@
+packages: []
+
+catalogs:
+  cli:
+    '@antfu/eslint-config': ^5.2.1
+    eslint: ^9.34.0
+    eslint-plugin-format: ^1.0.1
+    typescript: ^5.9.2
+    unbuild: ^3.6.1
+  types:
+    '@types/node': ^24.3.0
+  unocss:
+    '@unocss/core': ^66.4.2
+    '@unocss/extractor-arbitrary-variants': ^66.4.2
+    '@unocss/rule-utils': ^66.4.2
+
+onlyBuiltDependencies:
+  - esbuild
