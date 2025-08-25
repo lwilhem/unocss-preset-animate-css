@@ -1,4 +1,5 @@
 import type { Preflight } from 'unocss'
+import { compressCSS } from './utils'
 
 interface PropertyDefinition {
   syntax: string
@@ -117,7 +118,7 @@ export function properties(): Preflight {
       const root = `:root `
       const css = generatePropertyDeclarations()
 
-      return `${root}{${css}}`
+      return compressCSS(`${root}{${css}}`)
     },
   }
 }
