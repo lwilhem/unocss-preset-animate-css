@@ -1,95 +1,90 @@
 import type { Preflight } from 'unocss'
-import { compressCSS } from '../utils'
-
-interface PropertyDefinition {
-  syntax: string
-  inherits: boolean
-  initialValue?: string
-}
+import type { IPropertyDefinition } from '../utils'
+import { compress_css } from '../utils'
 
 // Define all the CSS custom properties programmatically
-export const animationProperties: Record<string, PropertyDefinition> = {
-  '--uno-animation-delay': {
+export const animationProperties: Record<string, IPropertyDefinition> = {
+  '--un-animation-delay': {
     syntax: '*',
     inherits: false,
     initialValue: '0s',
   },
-  '--uno-animation-direction': {
+  '--un-animation-direction': {
     syntax: '*',
     inherits: false,
     initialValue: 'normal',
   },
-  '--uno-animation-duration': {
+  '--un-animation-duration': {
     syntax: '*',
     inherits: false,
     // No initial value to allow --uno-duration variable to work
   },
-  '--uno-animation-fill-mode': {
+  '--un-animation-fill-mode': {
     syntax: '*',
     inherits: false,
     initialValue: 'none',
   },
-  '--uno-animation-iteration-count': {
+  '--un-animation-iteration-count': {
     syntax: '*',
     inherits: false,
     initialValue: '1',
   },
-  '--uno-enter-blur': {
+  '--un-enter-blur': {
     syntax: '*',
     inherits: false,
     initialValue: '0',
   },
-  '--uno-enter-opacity': {
+  '--un-enter-opacity': {
     syntax: '*',
     inherits: false,
     initialValue: '1',
   },
-  '--uno-enter-rotate': {
+  '--un-enter-rotate': {
     syntax: '*',
     inherits: false,
     initialValue: '0',
   },
-  '--uno-enter-scale': {
+  '--un-enter-scale': {
     syntax: '*',
     inherits: false,
     initialValue: '1',
   },
-  '--uno-enter-translate-x': {
+  '--un-enter-translate-x': {
     syntax: '*',
     inherits: false,
     initialValue: '0',
   },
-  '--uno-enter-translate-y': {
+  '--un-enter-translate-y': {
     syntax: '*',
     inherits: false,
     initialValue: '0',
   },
-  '--uno-exit-blur': {
+  '--un-exit-blur': {
     syntax: '*',
     inherits: false,
     initialValue: '0',
   },
-  '--uno-exit-opacity': {
+  '--un-exit-opacity': {
     syntax: '*',
     inherits: false,
     initialValue: '1',
   },
-  '--uno-exit-rotate': {
+  '--un-exit-rotate': {
     syntax: '*',
     inherits: false,
     initialValue: '0',
   },
-  '--uno-exit-scale': {
+  '--un-exit-scale': {
     syntax: '*',
     inherits: false,
     initialValue: '1',
   },
-  '--uno-exit-translate-x': {
+  '--un-exit-translate-x': {
     syntax: '*',
     inherits: false,
     initialValue: '0',
   },
-  '--uno-exit-translate-y': {
+  '--un-exit-translate-y': {
     syntax: '*',
     inherits: false,
     initialValue: '0',
@@ -114,11 +109,12 @@ export function generatePropertyDeclarations(): string {
 // TODO: find to a way to make :root { @propery } syntax work without preflights, inside unocss
 export function properties(): Preflight {
   return {
+    layer: 'preflights',
     getCSS: () => {
       const root = `:root `
       const css = generatePropertyDeclarations()
 
-      return compressCSS(`${root}{${css}}`)
+      return compress_css(`${root}{${css}}`)
     },
   }
 }
